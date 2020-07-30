@@ -206,6 +206,7 @@ def custom_turkish(root_path, meta_file):
     print(f" [!] {len(skipped_files)} files skipped. They don't exist...")
     return items
 
+
 # ToDo: add the dataset link when the dataset is released publicly
 def brspeech(root_path, meta_file):
     '''BRSpeech 3.0 beta'''
@@ -223,6 +224,7 @@ def brspeech(root_path, meta_file):
             items.append([text, wav_file, speaker_name])
     return items
 
+
 def vctk(root_path, meta_files=None, wavs_path='wav48'):
     """homepages.inf.ed.ac.uk/jyamagis/release/VCTK-Corpus.tar.gz"""
     test_speakers = meta_files
@@ -238,5 +240,5 @@ def vctk(root_path, meta_files=None, wavs_path='wav48'):
             text = file_text.readlines()[0]
         wav_file = os.path.join(root_path, wavs_path, speaker_id, file_id+'.wav')
         items.append([text, wav_file, speaker_id])
-    
+
     return items

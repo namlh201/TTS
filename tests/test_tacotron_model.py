@@ -9,7 +9,6 @@ from torch import nn, optim
 from TTS.tts.layers.losses import L1LossMasked
 from TTS.tts.models.tacotron import Tacotron
 from TTS.utils.io import load_config
-from tests import get_tests_path, get_tests_input_path, get_tests_output_path
 from TTS.utils.audio import AudioProcessor
 
 #pylint: disable=unused-variable
@@ -93,7 +92,7 @@ class TacotronTrainTest(unittest.TestCase):
 class TacotronGSTTrainTest(unittest.TestCase):
     @staticmethod
     def test_train_step():
-        # with random gst mel style 
+        # with random gst mel style
         input_dummy = torch.randint(0, 24, (8, 128)).long().to(device)
         input_lengths = torch.randint(100, 129, (8, )).long().to(device)
         input_lengths[-1] = 128

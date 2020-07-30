@@ -9,7 +9,6 @@ from torch import nn, optim
 from TTS.tts.layers.losses import MSELossMasked
 from TTS.tts.models.tacotron2 import Tacotron2
 from TTS.utils.io import load_config
-from tests import get_tests_path, get_tests_input_path, get_tests_output_path
 from TTS.utils.audio import AudioProcessor
 
 #pylint: disable=unused-variable
