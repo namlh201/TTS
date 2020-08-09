@@ -123,20 +123,47 @@ def mailabs(root_path, meta_files=None):
                     raise RuntimeError("> File %s does not exist!"%(wav_file))
     return items
 
+# def ljspeech(root_path, meta_file):
+#     """Normalizes the LJSpeech meta data file to TTS format"""
+#     txt_file = os.path.join(root_path, meta_file)
+#     items = []
+#     speaker_name = "ljspeech"
+#     with open(txt_file, 'r', encoding='utf8') as ttf:
+#         for line in ttf:
+#             cols = line.split('|')
+#             wav_file = os.path.join(root_path, 'wavs', cols[0] + '.wav')
+#             text = cols[1]
+#             items.append([text, wav_file, speaker_name])
+#     return items
+
+# def ljspeech(root_path, meta_file):
+#     """Normalizes the LJSpeech meta data file to TTS format"""
+#     txt_file = os.path.join(root_path, meta_file)
+#     items = []
+#     speaker_name = "ljspeech"
+#     ttf = open(txt_file, 'r', encoding='utf-8')
+#     for line in ttf:
+#         cols = line.split('|')
+#         wav_file = os.path.join(root_path, 'wavs', cols[0] + '.wav')
+#         text = cols[1]
+#         items.append([text, wav_file, speaker_name])
+#     ttf.close()
+#     return items
 
 def ljspeech(root_path, meta_file):
-    """Normalizes the Nancy meta data file to TTS format"""
+    """Normalizes the LJSpeech meta data file to TTS format"""
     txt_file = os.path.join(root_path, meta_file)
     items = []
     speaker_name = "ljspeech"
-    with open(txt_file, 'r') as ttf:
-        for line in ttf:
-            cols = line.split('|')
+    ttf = open(txt_file, 'r', encoding='utf-8')
+    for line in ttf:
+        cols = line.split('|')
+        if len(cols) > 1 and len(cols[1]) > 1:
             wav_file = os.path.join(root_path, 'wavs', cols[0] + '.wav')
             text = cols[1]
             items.append([text, wav_file, speaker_name])
+    ttf.close()
     return items
-
 
 def nancy(root_path, meta_file):
     """Normalizes the Nancy meta data file to TTS format"""
